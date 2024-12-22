@@ -1,4 +1,6 @@
-{% extends 'base.html' %}
+
+
+{% extends 'AppClub\base.html' %}
 
 {% block content %}
 <div class="container my-4">
@@ -7,14 +9,18 @@
             <form action="" method="POST">
             {% csrf_token %}
             <div class="mb-3">
-                <label class="form-label">Curso</label>
-                <input name="curso" type="text" class="form-control">
+                <label class="form-label">Nombre</label>
+                <input name="nombre" type="text" class="form-control">
             </div>
             <div class="mb-3">
-                <label class="form-label">Comisión</label>
-                <input name = "comision" type="text" class="form-control">
+                <label class="form-label">Apellido</label>
+                <input name = "apellido" type="text" class="form-control">
             </div>
-            <button type="submit" class="btn btn-primary"> Crear curso</button>
+            <div class="mb-3">
+                <label class="form-label">Deporte</label>
+                <input name = "deporte" type="text" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary"> Crear inscripcion</button>
             </form>
         </div>
     </div>
