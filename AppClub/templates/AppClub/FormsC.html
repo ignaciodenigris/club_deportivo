@@ -1,0 +1,22 @@
+{% extends 'AppClub\base2.html' %}
+{% load static %}
+{% block content %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Deporte</th>
+        <th scope="col">Fecha</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for formsComp in formsComp%}
+    <tr>
+        <td>{{formsComp.nombre}}</td>
+        <td>{{formsComp.deporte}}</td>
+        <td>{{formsComp.fechaDeCopetencia}}</td>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
