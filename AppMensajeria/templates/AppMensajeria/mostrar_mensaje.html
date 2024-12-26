@@ -1,0 +1,15 @@
+{% extends 'AppClub\base2.html' %}
+
+{% block content %}
+    <h1>Mis mensajes</h1>
+
+    {% if mensajes%}
+        {% for mensaje in mensajes%}
+            <p>Enviado por: {{mensaje.remitente}}</p>
+            <p>Mensaje: {{menaje.contenido}}</p>
+            <p>Enviado el: {{mensaje.fecha_envio}}</p>
+        {% endfor %}
+    {% else %}
+    <p>No tienes mensajes</p>
+    {% endif %}
+{% endblock %}
