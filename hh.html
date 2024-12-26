@@ -44,3 +44,4 @@ def edit_soliccomp(request, id):
     else:
         comp_form = compsorFormulario(initial={"nombre":comp.nombre, "apellido": comp.apellido, "email": comp.email, "compsion": comp.compsion})
     return render(request, "AppClub/forms/comp_formedit.html", {"form":comp_form})
+

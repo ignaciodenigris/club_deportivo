@@ -5,3 +5,4 @@ from AppClub.models import *
 admin.site.register(Inscripcion)
 admin.site.register(Profesor)
 admin.site.register(Copetencias)
+admin.site.register(Profile)

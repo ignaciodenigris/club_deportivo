@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 
-from AppClub.models import Inscripcion, Profesor, Copetencias
+from AppClub.models import Inscripcion, Profesor, Copetencias, Profile
 
 
-from AppClub.forms import AlumnoFormulario, ProfesorFormulario, CompetenciasFormulario
+from AppClub.forms import AlumnoFormulario, ProfesorFormulario, CompetenciasFormulario, UserUpdateForm, UserProfileForm
 
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.forms import UserCreationForm,  PasswordChangeForm
+from django.contrib.auth.models import User
 
 from django.http import HttpResponse
 
@@ -136,5 +139,70 @@ def competencias_form(request):
     else:
             competencias_form = CompetenciasFormulario()
             return render(request, "AppClub/forms/competencias-formulario.html", {"form":competencias_form})
+
+#log in, registrer, logout  
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('inicio')
+    else: 
+        return render(request, "AppClub/forms/log_in.html")
+
+def registrer_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inicio')
+    else:
+        form = UserCreationForm()
+    return render(request, "AppClub/forms/registrer.html", {"form": form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('inicio')
+
+# mostrar y editar prefil
+
+def show_user(request):
+    return render(request,"AppClub/profile/show_user.html")
+
+def edit_user(request):
+    
+    usuario = request.user
+    
+    profile, _ = Profile.objects.get_or_create(user=usuario)
+    
+    if request.method == "POST":
+        
+        user_form=UserUpdateForm(request.POST, instance=usuario)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('show_user')
+    
+    else:
+        user_form = UserUpdateForm(instance=usuario)
+        profile_form = UserProfileForm()
+    return render(request,"AppClub/profile/edit_user.html", {"user_form": user_form, "profile_form": profile_form})
+
+def edit_password(request):
+    usuario = request.user
+    if request.method == "POST":
+        password_form=PasswordChangeForm(usuario, request.POST)
+        if password_form.is_valid():
+            password_form.save()
+            update_session_auth_hash(request,usuario)
+            return redirect('inicio')
+    else:
+        password_form=PasswordChangeForm(usuario)
+    return render(request,"AppClub/profile/edit_password.html", {"password_form": password_form})
 
 

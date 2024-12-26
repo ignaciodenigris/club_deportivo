@@ -25,10 +25,29 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'forms' %}">Alumnos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'formsProf' %}">Profesores</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'formsComp' %}">Copetencias</a></li>
+                        {% if user.is_authenticated %}
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            User 
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'show_user' %}">info</a></li>
+                            <li><a class="dropdown-item" href="{% url 'edit_user' %}">change user</a></li>
+                            <li><a class="dropdown-item" href="{% url 'edit_password' %}">change password</a></li>
+                            <li><a class="dropdown-item"  href="{% url 'logout_view' %}">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout_view' %}">Logout</a></li>
+                            </ul>
+                        </div>
+
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'registrer_view' %}">Registrar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login_view' %}">Login</a></li>
+                        {%endif%}
+
                     </ul>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Enviar solicitud : 
+                        <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Enviar solicitud
                         </button>
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'alumno_form' %}">Alumno</a></li>

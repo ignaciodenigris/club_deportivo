@@ -19,7 +19,11 @@
         <td>{{formsProf.apellido}}</td>
         <td>{{formsProf.email}}</td>
         <td>{{formsProf.profesion}}</td>
+        {% if user.is_authenticated %}
         <td><a class="btn btn-danger" href="{% url 'eliminar_solicProfe' formsProf.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_solicProfe' formsProf.id  %}" >Editar</a></td>
+        {% else %}
+            <td>Sin permisos</td>
+        {%endif%}
     {% endfor %}
     </tbody>
 </table>

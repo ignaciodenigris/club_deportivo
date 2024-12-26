@@ -31,7 +31,12 @@ La Casa del Codigo / Cursos
         <td>{{forms.nombre}}</td>
         <td>{{forms.apellido}}</td>
         <td>{{forms.deporte}}</td>
-        <td><a class="btn btn-danger" href="{% url 'eliminar_solicAlumno' forms.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_solicAlumno' forms.id  %}" >Editar</a></td>
+        {% if user.is_authenticated %}
+            <td><a class="btn btn-danger" href="{% url 'eliminar_solicAlumno' forms.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_solicAlumno' forms.id  %}" >Editar</a></td>
+        {% else %}
+            <td>Sin permisos</td>
+        {%endif%}
+        
     {% endfor %}
     </tbody>
 </table>
