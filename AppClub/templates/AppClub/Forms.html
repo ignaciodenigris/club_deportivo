@@ -22,6 +22,7 @@ La Casa del Codigo / Cursos
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
         <th scope="col">Deporte</th>
+        <th scope="col">Editar</th>
     </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@ La Casa del Codigo / Cursos
         <td>{{forms.nombre}}</td>
         <td>{{forms.apellido}}</td>
         <td>{{forms.deporte}}</td>
+        <td><a class="btn btn-danger" href="{% url 'eliminar_solicAlumno' forms.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_solicAlumno' forms.id  %}" >Editar</a></td>
     {% endfor %}
     </tbody>
 </table>

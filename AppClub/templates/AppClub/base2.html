@@ -11,7 +11,7 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'AppClub\css\styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'AppClub\css\Clubb.css' %}" rel="stylesheet" />
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -22,10 +22,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'inscripcion' %}">Solicitud para Alumnos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'profesores' %}">Solicitud para Profesores</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'copetencias' %}">Solicitud de Copetencias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'forms' %}">Alumnos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'formsProf' %}">Profesores</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'formsComp' %}">Copetencias</a></li>
                     </ul>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Enviar solicitud : 
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'alumno_form' %}">Alumno</a></li>
+                        <li><a class="dropdown-item" href="{% url 'profesor_form' %}">Profesor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'competencias_form' %}">Competencias</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

@@ -19,8 +19,8 @@ class Profesor(models.Model):
 class Copetencias(models.Model):
     nombre = models.CharField(max_length=100)
     deporte = models.CharField(max_length=30)
-    fechaDeCopetencia = models.DateField()  
+    fecha = models.DateField()  
     def __str__(self):
-        return f"Nombre: {self.nombre} -- Apellido: {self.apellido} -- Fecha de la Copetencia: {self.fechaDeCopetencia}"
+        return f"Nombre: {self.nombre} -- Apellido: {self.apellido} -- Fecha de la Copetencia: {self.fecha}"
 
 # Create your models here.

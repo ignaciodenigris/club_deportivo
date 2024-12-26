@@ -167,3 +167,25 @@
         </div>
     </div>
 </div>
+
+
+def competencias_form(request):
+    if request.method == "POST":
+        competencias_form = competenciasFormulario(request.POST)
+        if competencias_form.is_valid():
+            competencias_form.save()
+            return redirect("inicio")
+    else:
+        competencias_form = competenciasFormulario()
+        return render(request, "AppClub/forms/competencias-formulario.html", {"form":competencias_form})
+
+
+def competencias_form(request):
+    if request.method == "POST":
+        competencias_form = competenciasFormulario(request.POST)
+        if competencias_form.is_valid():
+            competencias_form.save()
+            return redirect("inicio")
+    else:
+            competencias_form = competenciasFormulario()
+            return render(request, "AppClub/forms/competencias-formulario.html", {"form":competencias_form})
