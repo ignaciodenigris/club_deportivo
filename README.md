@@ -4,3 +4,6 @@ que no esta loged in o no tienen un superusuario, solo pueden ver la tabla de so
 
 Para empezar con la app, hay que entrar al "runserver" y dentro, entrar al la aplicacion AppClub y dirigirse al /inicio/. Desde alli se pueden entrar a todas las funciones o modelos y hasta la 
 app de mensajeria, donde solo los superusuarios pueden chatear.  
+
+Este es el video:
+https://www.awesomescreenshot.com/video/35009410?key=7da877f4a0d998128e242903326dc80b
