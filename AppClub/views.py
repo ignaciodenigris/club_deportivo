@@ -8,6 +8,7 @@ from AppClub.forms import AlumnoFormulario, ProfesorFormulario, CompetenciasForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm,  PasswordChangeForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponse
 
@@ -16,17 +17,13 @@ def inicio(request):
     print(forms)
     return render(request, "AppClub\index.html")
 
+
+
 def correct_edit(request):
     return render(request, "AppClub\devolucion\edit.html")
 
-def nav (request):
-    query = request.GET.get("q")
-    if query:
-        nav = Inscripcion.objects.filter(nombre__icontains = query)
-    else:
-        nav =  Inscripcion.objects.all()
-    return render(request, "AppClub\Forms.html", {"nav":forms} )
-
+def dragones(request):
+    return render(request, "AppClub\dragones.html")
 
 # tablas (para mostrar los datos)
 
@@ -42,7 +39,22 @@ def tablaCompetencia(request):
     formsComp= Copetencias.objects.all()
     return render(request, "AppClub\FormsC.html", {"formsComp":formsComp} )
 
+# formulario detallado 
+
+def dealle_solicAlumno(request, id):
+    alumno_form=Inscripcion.objects.get(id=id)
+    return render(request, "AppClub\devolucion\detalle.html",{"alumno_form":alumno_form})
+
+def detalle_solicProfe(request, id):
+    profe_form=Profesor.objects.get(id=id)
+    return render(request, "AppClub\devolucion\detalleP.html", {"profe_form":profe_form})
+
+def detalle_soliComp(request, id):
+    competencia_form=Copetencias.objects.get(id=id)
+    return render(request, "AppClub\devolucion\detalleC.html",{"competencia_form":competencia_form})
+
 # eliminacion de solicitudes (para eliminar datos):
+
 
 def eliminar_solicAlumno(request, id):
     alumno=Inscripcion.objects.get(id=id)
@@ -108,7 +120,7 @@ def edit_soliComp(request, id):
     return render(request, "AppClub/forms/comp_formedit.html", {"form":comp_form})
 
 # formularios (para crear datos)
-
+@login_required(login_url="login_view")
 def alumno_form(request):
     if request.method == "POST":
         alumno_form = AlumnoFormulario(request.POST)
@@ -119,6 +131,7 @@ def alumno_form(request):
         alumno_form = AlumnoFormulario()
         return render(request, "AppClub/forms/alumno-formulario.html", {"form":alumno_form})
 
+@login_required(login_url="login_view")
 def profesor_form(request):
     if request.method == "POST":
         profesor_form = ProfesorFormulario(request.POST)
@@ -129,7 +142,7 @@ def profesor_form(request):
         profesor_form = ProfesorFormulario()
         return render(request, "AppClub/forms/profesor-formulario.html", {"form":profesor_form})
 
-
+@login_required(login_url="login_view")
 def competencias_form(request):
     if request.method == "POST":
         competencias_form = CompetenciasFormulario(request.POST)

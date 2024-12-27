@@ -1,0 +1,16 @@
+{% extends 'AppClub\base2.html' %}
+{% load static %}
+{% block content %}
+
+<table class="table">
+    
+    <center>
+        <h1>Competencias</h1>
+        <h2>Aqui tiene todo los detalles</h2>
+        <p>Nombre: {{competencia_form.nombre}}</p>
+        <p>Deporte: {{competencia_form.deporte}}</p>
+        <p>Fecha: {{competencia_form.fecha}}</p>
+        <p>Descripcion: {{competencia_form.detalle}}</p>
+    </center>
+</table>
+{% endblock %}

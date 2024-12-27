@@ -3,6 +3,7 @@ from AppClub.views import *
 
 urlpatterns = [
     path('inicio/', inicio, name="inicio"),
+    path('dragones/', dragones, name="dragones"),
     path('forms/', tabla, name="forms"),
     path('formsProf/', tablaProfes, name = "formsProf"),
     path('formsComp/', tablaCompetencia, name = "formsComp"),
@@ -20,10 +21,13 @@ urlpatterns = [
     
     path('eliminar_solicAlumno/<int:id>', eliminar_solicAlumno, name = "eliminar_solicAlumno"),
     path('edit_solicAlumno/<int:id>', edit_solicAlumno, name = "edit_solicAlumno"),
+    path('dealle_solicAlumno/<int:id>', dealle_solicAlumno, name = "dealle_solicAlumno"),
     path('eliminar_solicProfe/<int:id>', eliminar_solicProfe, name = "eliminar_solicProfe"),
     path('edit_solicProfe/<int:id>', edit_solicProfe, name = "edit_solicProfe"),
+    path('detalle_solicProfe/<int:id>', detalle_solicProfe, name = "detalle_solicProfe"),
     path('eliminar_soliComp/<int:id>', eliminar_soliComp, name = "eliminar_soliComp"),
     path('edit_soliComp/<int:id>', edit_soliComp, name = "edit_soliComp"),
+    path('detalle_soliComp/<int:id>', detalle_soliComp, name = "detalle_soliComp"),
     
     
     #login

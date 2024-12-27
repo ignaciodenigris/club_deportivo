@@ -11,7 +11,7 @@ def enviar_mensaje (request):
         contenido = request.POST.get("contenido")
         destinatario = User.objects.get(username=destinatario_username)
         Mensaje.objects.create(remitente=request.user, destinatario=destinatario, contenido=contenido)
-        return redirect("mostrar-mensajes")
+        return redirect("inicio")
     
     usuarios = User.objects.exclude(username=request.user.username)
     return render(request, "AppMensajeria/enviar_mensaje.html", {"usuarios":usuarios})

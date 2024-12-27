@@ -1,0 +1,16 @@
+{% extends 'AppClub\base2.html' %}
+{% load static %}
+{% block content %}
+
+<table class="table">
+    
+    <center>
+        <h1>Candidatos/Alumnos</h1>
+        <h2>Aqui tiene todo los detalles</h2>
+        <p>Nombre: {{alumno_form.nombre}}</p>
+        <p>Appellido: {{alumno_form.apellido}}</p>
+        <p>Deporte: {{alumno_form.deporte}}</p>
+        <p>Descripcion: {{alumno_form.detalle}}</p>
+    </center>
+</table>
+{% endblock %}

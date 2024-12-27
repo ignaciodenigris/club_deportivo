@@ -7,15 +7,6 @@ La Casa del Codigo / Cursos
 
 <center><h1>Solicitudes para el Club:</h1></center>
 
-<h2 class="text-center mt-2">Buscar solicitud</h2>
-
-<div class="d-flex flex-column align-items-center mb-2">
-    <form action="" method = "GET">
-        <input type="text" name="q" placeholder = "Buscar..." required>
-        <button type="submit">Buscar</button>
-    </form>
-</div>
-
 <table class="table">
     <thead>
     <tr>
@@ -32,9 +23,9 @@ La Casa del Codigo / Cursos
         <td>{{forms.apellido}}</td>
         <td>{{forms.deporte}}</td>
         {% if user.is_authenticated %}
-            <td><a class="btn btn-danger" href="{% url 'eliminar_solicAlumno' forms.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_solicAlumno' forms.id  %}" >Editar</a></td>
+            <td><a class="btn btn-danger" href="{% url 'eliminar_solicAlumno' forms.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_solicAlumno' forms.id  %}" >Editar</a> <a class="btn btn-info" href="{% url 'dealle_solicAlumno' forms.id  %}" >Detalles</a></td>
         {% else %}
-            <td>Sin permisos</td>
+            <td><a class="btn btn-info" href="{% url 'dealle_solicAlumno' forms.id  %}" >Detalles</a>Sin otros permisos</td>
         {%endif%}
         
     {% endfor %}

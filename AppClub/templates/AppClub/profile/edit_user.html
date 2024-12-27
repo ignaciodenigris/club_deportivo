@@ -4,11 +4,13 @@
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-4">
+            <center><h1>Edita el Usuario</h1></center>
+            <center><h5>y el prefil tambien</h5></center>
             <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{user_form.as_p}}
-            {{profile_form.as_p}}
-            <button type="submit" class="btn btn-primary">Editar prefil</button>
+            <center>{{user_form.as_p}}
+                {{profile_form.as_p}}</center>
+                <center><button type="submit" class="btn btn-primary">Editar prefil</button></center>
             </form>
         </div>
     </div>

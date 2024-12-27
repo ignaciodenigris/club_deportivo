@@ -18,9 +18,9 @@
         <td>{{formsComp.deporte}}</td>
         <td>{{formsComp.fecha}}</td>
         {% if user.is_authenticated %}
-        <td><a class="btn btn-danger" href="{% url 'eliminar_soliComp' formsComp.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_soliComp' formsComp.id  %}" >Editar</a></td>
+        <td><a class="btn btn-danger" href="{% url 'eliminar_soliComp' formsComp.id  %}">Eliminar</a> <a class="btn btn-warning" href="{% url 'edit_soliComp' formsComp.id  %}" >Editar</a><a class="btn btn-info" href="{% url 'detalle_soliComp' formsComp.id  %}" >Detalles</a></td>
         {% else %}
-            <td>Sin permisos</td>
+            <td> <a class="btn btn-info" href="{% url 'detalle_soliComp' formsComp.id  %}" >Detalles</a> Sin permisos</td>
         {%endif%}
     {% endfor %}
     </tbody>
